@@ -117,6 +117,11 @@ export const stack = [
     items: [".NET Core", "Entity Framework", "Gin", "REST APIs", "OAuth2 / Duende IdentityServer", "Microservicios"],
   },
   {
+    id: "ai",
+    title: { es: "IA aplicada", en: "Applied AI" } satisfies I18nText,
+    items: ["LangGraph", "LangChain", "Gemini", "RAG", "Text-to-SQL", "ChromaDB", "LangSmith"],
+  },
+  {
     id: "data",
     title: { es: "Datos", en: "Data" } satisfies I18nText,
     items: ["SQL Server", "PostgreSQL", "SQLite", "Modelado relacional", "ERD / Mermaid"],
@@ -140,6 +145,39 @@ export const stack = [
 export type ProjectLink = { label: string; href: string };
 
 export const projects = [
+  {
+    id: "sql-gym-agent",
+    name: "SQL Gym AI Agent",
+    year: "2026",
+    featured: true,
+    kind: { es: "Académico", en: "Academic" } satisfies I18nText,
+    tagline: {
+      es: "Agente de IA que combina text-to-SQL y RAG para un gimnasio de tres sedes",
+      en: "AI agent combining text-to-SQL and RAG for a three-branch gym",
+    } satisfies I18nText,
+    description: {
+      es: "Socios y empleados preguntan en lenguaje natural y el agente decide si consultar PostgreSQL, buscar en los reglamentos en PDF o cruzar las dos fuentes, citando de dónde sale cada dato. Los administradores también operan sobre socios desde el chat, con confirmación humana y auditoría. El modelo decide qué buscar y cómo redactarlo; los permisos, la validación del SQL y las reglas de negocio se aplican en código. Trabajo integrador de AI Engineering en la UCSE, hecho en equipo de tres con Spec Driven Development.",
+      en: "Members and staff ask in natural language and the agent decides whether to query PostgreSQL, search the PDF policies or combine both, citing where each fact comes from. Admins can also update members from the chat, with human confirmation and an audit trail. The model decides what to look up and how to word it; permissions, SQL validation and business rules are enforced in code. Capstone project for AI Engineering at UCSE, built in a team of three using Spec Driven Development.",
+    } satisfies I18nText,
+    highlights: {
+      es: [
+        "59/59 casos de evaluación contra el agente real, 100 % en las 10 métricas (con LLM-as-a-judge) y cero escrituras sin confirmación",
+        "Tres barreras independientes para el SQL generado: validador con sqlglot, roles de solo lectura y transacción READ ONLY, más vistas filtradas por fila para los socios",
+        "Citas verificadas en código contra los fragmentos recuperados: una fuente inventada por el modelo nunca llega al usuario",
+        "Grafo de 11 nodos en LangGraph, solo 4 llaman al LLM, con pausa human-in-the-loop y revalidación con SELECT FOR UPDATE antes de escribir",
+      ],
+      en: [
+        "59/59 evaluation cases against the real agent, 100% on all 10 metrics (with LLM-as-a-judge) and zero unconfirmed writes",
+        "Three independent barriers for generated SQL: sqlglot validator, read-only roles and READ ONLY transactions, plus row-filtered views for members",
+        "Citations verified in code against the retrieved chunks: a source made up by the model never reaches the user",
+        "11-node LangGraph graph where only 4 nodes call the LLM, with a human-in-the-loop pause and SELECT FOR UPDATE revalidation before writing",
+      ],
+    } satisfies I18nList,
+    stack: ["Python", "LangGraph", "Gemini", "PostgreSQL", "ChromaDB", "sqlglot", "Streamlit", "LangSmith", "Docker"],
+    links: [
+      { label: "GitHub", href: "https://github.com/mijaelsegura03/sql-gym-ai-agent" },
+    ] as ProjectLink[],
+  },
   {
     id: "aura",
     name: "AURA",
